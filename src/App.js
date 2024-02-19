@@ -1,17 +1,16 @@
-import React, { useState, useRef } from "react";
-import Library from "./components/Library";
-import Player from "./components/Player";
+import React, { useState } from "react";
+
+// import Components
 import Song from "./components/Song";
+import Player from "./components/Player";
+// import style
 import "./styles/app.scss";
-//  Adding data 
-import chillHop from "./util";
+// import data
+import data from "./util";
 
 function App() {
-
-  const audioRef = useRef(null);
-
-  const [song, setSong] = useState(chillHop());
-  const [currentSong, setCurrentSong] = useState(song[1]);
+  const [songs, setSongs] = useState(data());
+  const [currentSong, setCurrentSong] = useState(songs[2]);
   const [isPlaying, setIsPlaying] = useState(false);
 
   return (
@@ -21,13 +20,6 @@ function App() {
         currentSong={currentSong}
         isPlaying={isPlaying}
         setIsPlaying={setIsPlaying}
-        audioRef={audioRef}
-      />
-      <Library
-        songs={song}
-        setCurrentSong={setCurrentSong}
-        audioRef={audioRef}
-        isPlaying={isPlaying}
       />
     </div>
   );

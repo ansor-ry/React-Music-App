@@ -7,22 +7,19 @@ import {
   faPause,
 } from "@fortawesome/free-solid-svg-icons";
 
-const Player = ({ currentSong, isPlaying, setIsPlaying, audioRef }) => {
-  // Hooks
+function Player({ currentSong, isPlaying, setIsPlaying }) {
+  const audioRef = useRef(null);
   const [songInfo, setSongInfo] = useState({
     currentTime: 0,
-    duration: 0,
+    duration: null,
   });
 
-  // Hooks
-  const audioRefPlayer = audioRef;
-  // Event Handlers
-  const playSongHandler = () => {
+  const playHandler = (e) => {
     if (isPlaying) {
-      audioRefPlayer.current.pause();
+      audioRef.current.pause();
       setIsPlaying(!isPlaying);
     } else {
-      audioRefPlayer.current.play();
+      audioRef.current.play();
       setIsPlaying(!isPlaying);
     }
   };
@@ -45,7 +42,7 @@ const Player = ({ currentSong, isPlaying, setIsPlaying, audioRef }) => {
   };
 
   const dragHandler = (e) => {
-    audioRefPlayer.current.currentTime = e.target.value;
+    audioRef.current.currentTime = e.target.value;
     setSongInfo({
       ...songInfo,
       currentTime: e.target.value,
@@ -66,29 +63,22 @@ const Player = ({ currentSong, isPlaying, setIsPlaying, audioRef }) => {
         <p>{getTime(songInfo.duration)}</p>
       </div>
       <div className="player-control">
-        <FontAwesomeIcon icon={faAngleLeft} className="skip-back" size="2x" />
-
+        <FontAwesomeIcon icon={faAngleLeft} size="2x" />
         <FontAwesomeIcon
+          onClick={playHandler}
           icon={isPlaying ? faPause : faPlay}
-          className="play"
-          size="2x"
-          onClick={playSongHandler}
-        />
-
-        <FontAwesomeIcon
-          icon={faAngleRight}
-          className="skip-forward"
           size="2x"
         />
+        <FontAwesomeIcon icon={faAngleRight} size="2x" />
       </div>
       <audio
-        onTimeUpdate={timeUpdateHandler}
-        ref={audioRefPlayer}
+        ref={audioRef}
         src={currentSong.audio}
-        onLoadedData={timeUpdateHandler}
+        onTimeUpdate={timeUpdateHandler}
+        onLoadedMetadata={timeUpdateHandler}
       ></audio>
     </div>
   );
-};
+}
 
 export default Player;

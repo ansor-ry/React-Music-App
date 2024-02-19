@@ -22,7 +22,26 @@ function chillHop() {
       id: uuidv4(),
       active: false,
     },
+    {
+      name: "Hushed Awakenin",
+      cover:
+        "https://chillhop.com/wp-content/uploads/2024/02/348f36853441467ba4a8b54a74b3c9c571b953d6-1024x1024.jpg",
+      artist: "Enzalla, Majko",
+      audio: "https://stream.chillhop.com/mp3/73622",
+      color: ["#4E2923", "#91725D"],
+      id: uuidv4(),
+      active: true,
+    },
+    {
+      name: "3am, Sao Paulo",
+      cover:
+        "https://chillhop.com/wp-content/uploads/2024/02/348f36853441467ba4a8b54a74b3c9c571b953d6-1024x1024.jpg",
+      artist: "Psalm Trees, less.people",
+      audio: "https://stream.chillhop.com/mp3/73624",
+      color: ["#4E2923", "#91725D"],
+      id: uuidv4(),
+      active: false,
+    },
   ];
 }
-
 export default chillHop;
