@@ -12,9 +12,16 @@ function App() {
   const [songs, setSongs] = useState(data());
   const [currentSong, setCurrentSong] = useState(songs[2]);
   const [isPlaying, setIsPlaying] = useState(false);
-
+  const color = currentSong.color;
+  console.log(color);
+  // background: ;
   return (
-    <div className="App">
+    <div
+      className="App"
+      style={{
+        background: `linear-gradient(45deg, ${color[0]} 0%, ${color[1]} 100%)`,
+      }}
+    >
       <Song currentSong={currentSong} />
       <Player
         currentSong={currentSong}
