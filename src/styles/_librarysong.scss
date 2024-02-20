@@ -1,0 +1,25 @@
+.library-song {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin: 1rem 0;
+  padding: 1rem;
+  transition: 0.2s;
+  p {
+    margin-top: 1rem;
+  }
+  img {
+    width: 30%;
+    border-radius: 50%;
+    margin-right: 3rem;
+  }
+  &:hover {
+    background: crimson;
+    p {
+      color: #fff;
+    }
+    h3 {
+      color: #fff;
+    }
+  }
+}
