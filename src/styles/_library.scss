@@ -12,6 +12,8 @@
 }
 .library {
   position: fixed;
+  transform: translateX(-100%);
+  opacity: 0;
   top: 0;
   left: 0;
   bottom: 0;
@@ -19,6 +21,8 @@
   width: 20vw;
   overflow-y: scroll;
   background: #fff;
+  color: #000;
+  transition: 0.3s linear all;
   h1 {
     display: flex;
     align-items: center;
@@ -28,5 +32,18 @@
     width: 100%;
     background: crimson;
     color: #fff;
+  }
+}
+.active-library {
+  transform: translateX(0%);
+  opacity: 1;
+  transition: 0.3s all;
+}
+
+@media (min-width: 0) and (max-width: 768px) {
+  .library {
+    img {
+      width: 100%;
+    }
   }
 }
